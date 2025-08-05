@@ -20,6 +20,8 @@ jobs:
         ref: ${{ github.head_ref }}
     - name: validate package dependencies
       run: |
+        set -x
+        swift  --version
         RESULT=$(swift package show-dependencies | grep unspecified)
         if [ -n "$RESULT" ]; then
           echo "Unspecified dependencies found in the package:"
