@@ -22,7 +22,7 @@ jobs:
       run: |
         set -x
         swift  --version
-        RESULT=$(swift package show-dependencies | grep unspecified)
+        RESULT=$(swift package show-dependencies | grep unspecified) || true
         if [ -n "$RESULT" ]; then
           echo "Unspecified dependencies found in the package:"
           echo "$RESULT"
